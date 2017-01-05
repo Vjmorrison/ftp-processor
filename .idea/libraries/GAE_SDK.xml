@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="GAE_SDK" type="python">
+    <CLASSES>
+      <root url="file:///Users/morrv026/Downloads/google-cloud-sdk/platform/google_appengine" />
+      <root url="file:///Users/morrv026/Downloads/google-cloud-sdk/platform/google_appengine/lib/jinja2-2.6" />
+      <root url="file:///Users/morrv026/Downloads/google-cloud-sdk/platform/google_appengine/lib/webapp2-2.5.2" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

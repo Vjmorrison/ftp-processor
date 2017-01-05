@@ -1,0 +1,28 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+module: logging
+
+handlers:
+- url: /api/.*
+  script: app.weblogging.app
+  login: required
+  secure: always
+
+- url: /task/.*
+  script: app.weblogging.app
+  login: admin
+  secure: always
+
+- url: /healthcheck
+  script: app.weblogging.app
+  secure: always
+
+- url: /
+  script: app.weblogging.app
+  login: required
+  secure: always
+
+libraries:
+- name: ssl
+  version: latest

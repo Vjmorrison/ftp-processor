@@ -1,0 +1,25 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+module: polling
+
+handlers:
+
+- url: /api/.*
+  script: app.polling.app
+  login: required
+  secure: always
+
+- url: /task/.*
+  script: app.polling.app
+  login: admin
+  secure: always
+
+- url: /healthcheck
+  script: app.polling.app
+  secure: always
+
+- url: /
+  script: app.polling.app
+  login: required
+  secure: always

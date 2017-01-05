@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TechOps Trending Service</title>
+</head>
+<body>
+<div>
+    <h1>TechOps Trending Service</h1>
+    <h3>Welcome {{ user.nickname() }}</h3>
+</div>
+<div>
+    <div id="tabs">
+        <ul>
+            {% for api_target in api_targets %}<li><a href="#{{ api_target['name'] }}">{{ api_target['name'] }}</a></li>
+            {% endfor %}
+        </ul>
+        {% for api_target in api_targets %}
+        <div id="{{ api_target['name'] }}">
+            <h3>{{ api_target['name'] }} Module API</h3>
+            <ul>
+                {% for api in api_target['api_methods'] %}
+                <li>
+                    <ul>
+                        <li>Method: {{ api['name'] }}</li>
+                        <li>Request Type: {{ api['request_method'] }}</li>
+                        <li>Description: <pre class="description">{{ api['description'] }}</pre></li>
+                        {% if api['parameters'] %}
+                        <li>
+                            Parameters:
+                            <ul>
+                                {% for param in api['parameters'] %}
+                                <li>{{ param['name'] }} (Default Value: {{ param['default_value_readable'] }}) {%if param['required'] %}<b>*Required*</b>{% endif %} </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li>Parameters: None</li>
+                        {% endif %}
+                        <li>
+                            <div class="accordion">
+                                <h3>Test API</h3>
+                                <div>
+                                    <form class="api_form" action="{{ api['url'] }}" method="{{ api['request_method'] }}">
+                                        <fieldset>
+                                            <legend>{{ api['name'] }}</legend>
+                                            <div class="api_form">
+                                                <div>
+                                                    {% if api['parameters'] %}
+                                                    {% for param in api['parameters'] %}
+                                                    <div>
+                                                        <span>{{ param['name'] }}</span><input type="text" name="{{ param['name'] }}" value="{% if param['default_value'] %}{{ param['default_value'] }} {% endif %}">
+                                                    </div>
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                </div>
+                                                <div>
+                                                    <button>Submit</button>
+                                                </div>
+                                                <div>
+                                                    <h3>Result:</h3>
+                                                    <pre class="result"></pre>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                </br>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script type="text/javascript" src="/js/jquery-ui/external/jquery/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui/jquery-ui.js"></script>
+<script type="text/javascript" src="/js/DBUtils.js"></script>
+<script type="text/javascript" src="/js/RecordModel.js"></script>
+<script type="text/javascript" src="/js/ApiService.js"></script>
+<script type="text/javascript" src="/js/trending.js"></script>
+<link rel="stylesheet" href="/js/jquery-ui/jquery-ui.css">
+<link rel="stylesheet" href="/css/trending.css">
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+queue:
+- name: polling-queue
+  target: polling
+  rate: 10/s
+  bucket_size: 10
+  max_concurrent_requests: 10
+  retry_parameters:
+    task_retry_limit: 10
+
+- name: alerting-queue
+  target: alerting
+  rate: 10/s
+  retry_parameters:
+    task_retry_limit: 10
+
+- name: logging-queue
+  target: logging
+  rate: 100/s
+  bucket_size: 100
+
+- name: admin-queue
+  target: admin
+  rate: 10/s
+  retry_parameters:
+    task_retry_limit: 10

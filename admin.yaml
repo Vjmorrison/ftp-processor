@@ -1,0 +1,25 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+module: admin
+
+handlers:
+
+- url: /
+  script: app.admin.app
+  login: required
+  secure: always
+
+- url: /healthcheck
+  script: app.admin.app
+  secure: always
+
+- url: /api/.*
+  script: app.admin.app
+  login: required
+  secure: always
+
+- url: /task/.*
+  script: app.admin.app
+  login: admin
+  secure: always

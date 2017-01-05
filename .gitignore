@@ -1,0 +1,5 @@
+# Google App Engine generated folder
+appengine-generated/
+#creds
+ftp_creds.json
+valid_users.json

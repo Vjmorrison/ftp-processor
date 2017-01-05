@@ -1,0 +1,58 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+module: default
+
+handlers:
+- url: /api/.*
+  script: app.frontend.app
+  login: required
+  secure: always
+
+- url: /api
+  script: app.frontend.app
+  login: required
+  secure: always
+
+- url: /task/.*
+  script: app.frontend.app
+  login: admin
+  secure: always
+
+- url: /cron/.*
+  script: app.frontend.app
+  login: admin
+  secure: always
+
+- url: /
+  script: app.frontend.app
+  login: required
+  secure: always
+
+- url: /js
+  static_dir: static/js
+  secure: always
+
+- url: /css
+  static_dir: static/css
+  secure: always
+
+- url: /testall
+  script: app.frontend.app
+  secure: always
+
+- url: /qa/poll_metrics
+  script: app.frontend.app
+  secure: always
+
+- url: /healthcheck
+  script: app.frontend.app
+  secure: always
+
+libraries:
+- name: jinja2
+  version: "2.6"
+- name: markupsafe
+  version: "0.15"
+- name: ssl
+  version: latest

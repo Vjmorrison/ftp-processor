@@ -1,0 +1,33 @@
+pre.result {
+    background-color: beige;
+}
+
+pre.description {
+    border-radius: 25px;
+    border-width: 1px;
+    border-style: solid;
+    padding: 20px;
+    border-color: cadetblue;
+    display: inline-flex;
+}
+
+table.values {
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    float: left;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.chart{
+    display: inline-block;
+}

@@ -1,0 +1,24 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+module: alerting
+
+handlers:
+- url: /api/.*
+  script: app.alerting.app
+  login: required
+  secure: always
+
+- url: /task/.*
+  script: app.alerting.app
+  login: admin
+  secure: always
+
+- url: /healthcheck
+  script: app.alerting.app
+  secure: always
+
+- url: /
+  script: app.alerting.app
+  login: required
+  secure: always
